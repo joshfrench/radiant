@@ -46,6 +46,22 @@ describe Radiant::Extension do
       config.should eql(Rails.configuration)
     end
   end
+
+  describe ".extension_enabled?" do
+    it "should be false if extension does not exist" do
+      BasicExtension.extension_enabled?(:bogus).should be_false
+    end
+
+    it "should be false if extension is not migrated" do
+      UpgradingExtension.migrator.new(:up, UpgradingExtension.migrations_path).pending_migrations.should_not be_empty # sanity check
+      BasicExtension.extension_enabled?(:upgrading).should be_false
+    end
+
+    it "should be true if extension is defined and migrated" do
+      UpgradingExtension.migrator.new(:up, UpgradingExtension.migrations_path).migrate
+      BasicExtension.extension_enabled?(:upgrading).should be_true
+    end
+  end
 end
 
 describe Radiant::Extension, "when inactive" do

@@ -31,6 +31,15 @@ module Radiant
       AdminUI.instance
     end
 
+    def extension_enabled?(extension)
+      begin
+        extension = (extension.to_s.camelcase + 'Extension').constantize
+        extension.migrator.new(:up, extension.migrations_path).pending_migrations.empty?
+      rescue NameError
+        false
+      end
+    end
+
     class << self
 
       def activate_extension
