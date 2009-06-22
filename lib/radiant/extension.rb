@@ -31,6 +31,11 @@ module Radiant
       AdminUI.instance
     end
 
+    # Determine if another extension is installed and up to date.
+    #
+    # if MyExtension.extension_enabled?(:third_party)
+    #   ThirdPartyExtension.extend(MyExtension::IntegrationPoints)
+    # end
     def extension_enabled?(extension)
       begin
         extension = (extension.to_s.camelcase + 'Extension').constantize
