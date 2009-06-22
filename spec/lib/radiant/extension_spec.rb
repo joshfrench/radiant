@@ -58,7 +58,9 @@ describe Radiant::Extension do
     end
 
     it "should be true if extension is defined and migrated" do
-      UpgradingExtension.migrator.new(:up, UpgradingExtension.migrations_path).migrate
+      ActiveRecord::Migration.suppress_messages do
+        UpgradingExtension.migrator.migrate
+      end
       BasicExtension.extension_enabled?(:upgrading).should be_true
     end
   end
