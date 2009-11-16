@@ -58,6 +58,12 @@ describe Radiant::ExtensionLoader do
     lambda { @instance.send(:select_extension_roots) }.should raise_error(LoadError)
   end
 
+  it "should skip invalid gems" do
+    @configuration.stub!(:extension_paths).and_return([])
+    @configuration.stub!(:gems).and_return([Rails::GemDependency.new('bogus_gem')])
+    @instance.send(:all_extension_roots).should eql([])
+  end
+
   it "should determine load paths from an extension path" do
     @instance.send(:load_paths_for, "#{RADIANT_ROOT}/vendor/extensions/archive").should == %W{
         #{RADIANT_ROOT}/vendor/extensions/archive/lib

@@ -39,7 +39,7 @@ module Radiant
         Dir["#{path}/*"].select {|f| File.directory?(f) }
       end
       gems.inject(all) do |available,gem|
-        available.tap { |a| a << gem.specification.full_gem_path unless Dir[gem.specification.full_gem_path + '/*_extension.rb'].empty? }
+        available.tap { |a| a << gem.specification.full_gem_path if gem.specification and Dir[gem.specification.full_gem_path + '/*_extension.rb' ].any? }
       end
       all.flatten.map {|f| File.basename(f).sub(/^\d+_|-[\d\.]+$/, '') }.sort.map {|e| e.to_sym }
     end

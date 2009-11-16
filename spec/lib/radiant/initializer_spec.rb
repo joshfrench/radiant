@@ -70,6 +70,13 @@ describe Radiant::Configuration do
       @configuration.check_extension_dependencies
     }.should raise_error(SystemExit)
   end
+
+  describe "#all_available_extensions" do
+    it "should skip invalid gems" do
+      @configuration.gems = [Rails::GemDependency.new 'bogus_gem']
+      @configuration.all_available_extensions.should_not include(:bogus_gem)
+    end
+  end
 end
 
 describe Radiant::Initializer do
