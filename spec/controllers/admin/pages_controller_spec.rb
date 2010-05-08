@@ -204,17 +204,15 @@ describe Admin::PagesController do
     end
   end
 
-  it "should initialize meta and buttons_partials in new action" do
+  it "should initialize buttons_partials in new action" do
     get :new, :page_id => page_id(:home)
     response.should be_success
-    assigns(:meta).should be_kind_of(Array)
     assigns(:buttons_partials).should be_kind_of(Array)
   end
 
-  it "should initialize meta and buttons_partials in edit action" do
+  it "should initialize buttons_partials in edit action" do
     get :edit, :id => page_id(:home)
     response.should be_success
-    assigns(:meta).should be_kind_of(Array)
     assigns(:buttons_partials).should be_kind_of(Array)
   end
 
