@@ -23,7 +23,8 @@
             %td.field= fields.text_field :breadcrumb, :class => 'textbox', :maxlength => 160
             %td.actions
               - if @page.metas.none?
-                %img{:src=>"/images/admin/plus_grey.png", :alt=>"Add Attribute", :title=>""}/
+                - link_to '#add_attribute_popup', :class=>'popup' do
+                  = image 'plus_grey', :alt => "Add Attribute"
           = render :partial => "meta_row", :collection => @page.metas, :locals => {:f => fields}
           = render_region :extended_metadata, :locals => {:f => fields}
       .drawer_handle
