@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091003095744) do
+ActiveRecord::Schema.define(:version => 20100508205550) do
 
   create_table "config", :force => true do |t|
     t.string "key",   :limit => 40, :default => "", :null => false
@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(:version => 20091003095744) do
     t.string   "content_type",  :limit => 40
     t.integer  "lock_version",                 :default => 0
   end
+
+  create_table "page_metas", :force => true do |t|
+    t.integer "page_id"
+    t.string  "name"
+    t.string  "content"
+  end
+
+  add_index "page_metas", ["page_id"], :name => "index_page_metas_on_page_id"
 
   create_table "page_parts", :force => true do |t|
     t.string  "name",      :limit => 100
