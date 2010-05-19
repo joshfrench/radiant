@@ -8,3 +8,4 @@
  this: that
  defaults.page.filter: ""
  true?: true
+ defaults.page.meta: Keywords, Description

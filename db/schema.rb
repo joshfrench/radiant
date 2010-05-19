@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100508205550) do
+ActiveRecord::Schema.define(:version => 20100516202417) do
 
   create_table "config", :force => true do |t|
     t.string "key",   :limit => 40, :default => "", :null => false
@@ -67,14 +67,12 @@ ActiveRecord::Schema.define(:version => 20100508205550) do
     t.integer  "updated_by_id"
     t.boolean  "virtual",                      :default => false, :null => false
     t.integer  "lock_version",                 :default => 0
-    t.string   "description"
-    t.string   "keywords"
   end
 
-  add_index "pages", ["class_name"], :name => "pages_class_name"
-  add_index "pages", ["parent_id"], :name => "pages_parent_id"
-  add_index "pages", ["slug", "parent_id"], :name => "pages_child_slug"
-  add_index "pages", ["virtual", "status_id"], :name => "pages_published"
+  add_index "pages", ["class_name"], :name => "altered_pages_class_name"
+  add_index "pages", ["parent_id"], :name => "altered_pages_parent_id"
+  add_index "pages", ["slug", "parent_id"], :name => "altered_pages_child_slug"
+  add_index "pages", ["virtual", "status_id"], :name => "altered_pages_published"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id"

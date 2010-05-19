@@ -23,6 +23,7 @@ module Radiant
   # defaults.page.parts       :: a comma separated list of default page parts
   # defaults.page.status      :: a string representation of the default page status
   # defaults.page.filter      :: the default filter to use on new page parts
+  # defaults.page.meta        :: a comma separated list of default page meta attributes
   # dev.host                  :: the hostname where draft pages are viewable
   # local.timezone            :: the timezone name (`rake -D time` for full list)
   #                              used to correct displayed times
