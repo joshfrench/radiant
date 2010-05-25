@@ -228,7 +228,6 @@ class Page < ActiveRecord::Base
     def new_with_defaults(config = Radiant::Config)
       page = new
       page.parts.concat default_page_parts(config)
-      page.metas.concat default_page_meta(config)
       default_status = config['defaults.page.status']
       page.status = Status[default_status] if default_status
       page
@@ -257,13 +256,6 @@ class Page < ActiveRecord::Base
         default_parts = config['defaults.page.parts'].to_s.strip.split(/\s*,\s*/)
         default_parts.map do |name|
           PagePart.new(:name => name, :filter_id => config['defaults.page.filter'])
-        end
-      end
-
-      def default_page_meta(config = Radiant::Config)
-        default_meta = config['defaults.page.meta'].to_s.strip.split(/\s*,\s*/)
-        default_meta.map do |name|
-          PageMeta.new(:name => name)
         end
       end
   end

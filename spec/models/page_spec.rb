@@ -490,13 +490,6 @@ describe Page, "class" do
     end
   end
 
-  it "should allow initialization with default meta" do
-    @page = Page.new_with_defaults({ 'defaults.page.meta' => 'x, y, z' })
-    @page.metas.size.should == 3
-    @page.metas.first.name.should == 'x'
-    @page.metas.last.name.should == 'z'
-  end
-
   it "should expose default page parts" do
     override = PagePart.new(:name => 'override')
     Page.stub!(:default_page_parts).and_return([override])
