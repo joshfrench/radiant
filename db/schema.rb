@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(:version => 20100516202417) do
     t.integer  "lock_version",                 :default => 0
   end
 
-  create_table "page_metas", :force => true do |t|
+  create_table "page_meta", :force => true do |t|
     t.integer "page_id"
     t.string  "name"
     t.string  "content"
   end
 
-  add_index "page_metas", ["page_id"], :name => "index_page_metas_on_page_id"
+  add_index "page_meta", ["page_id"], :name => "index_page_meta_on_page_id"
 
   create_table "page_parts", :force => true do |t|
     t.string  "name",      :limit => 100

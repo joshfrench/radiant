@@ -1,8 +1,8 @@
 class ConvertPageMeta < ActiveRecord::Migration
   def self.up
     Page.all.each do |page|
-      page.metas.create(:name => 'Keywords', :content => page.keywords)
-      page.metas.create(:name => 'Description', :content => page.description)
+      page.meta.create(:name => 'Keywords', :content => page.keywords)
+      page.meta.create(:name => 'Description', :content => page.description)
     end
     remove_column :pages, :keywords
     remove_column :pages, :description
