@@ -354,7 +354,7 @@ img.avatar {
     .drawer_contents table.fieldset td.field {
       padding-left: 0px;
       padding-right: 10px;
-      text-align: right;
+      text-align: left;
       width: auto; }
       .drawer_contents table.fieldset td.field input.textbox {
         font-size: 110%;
